@@ -28,6 +28,7 @@ import java.awt.Label;
 @SuppressWarnings("serial")
 public class FormularioReservas extends JDialog {
 
+	
 	Connection connection=conexionSQL.dbConector();
 	
 	metodosReservas metodosR=new metodosReservas();

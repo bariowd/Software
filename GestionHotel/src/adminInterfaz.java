@@ -37,7 +37,7 @@ public class adminInterfaz extends JFrame {
 	private JTable tablaClientes_1;
 	private JTable tablaReservas_1;
 	/**
-	 * Create the frame.
+	 * Create the frame. hola
 	 */
 	public adminInterfaz(String idAd) {
 		idAdministradorNow=idAd;

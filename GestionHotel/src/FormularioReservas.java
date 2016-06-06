@@ -65,7 +65,7 @@ public class FormularioReservas extends JDialog {
 	}
 	@SuppressWarnings("rawtypes")
 	public void inicializar() {
-		setBounds(400, 175, 408, 428);
+		setBounds(400, 175, 422, 498);
 		setResizable(false);
 		setTitle("Formulario para la Reserva");
 		getContentPane().setLayout(new BorderLayout());
@@ -119,11 +119,11 @@ public class FormularioReservas extends JDialog {
 				ay.setVisible(true);
 			}
 		});
-		btnHelp.setBounds(30, 359, 33, 30);
+		btnHelp.setBounds(33, 426, 33, 30);
 		contentPanel.add(btnHelp);
 		{
 			JButton okButton = new JButton("Siguiente");
-			okButton.setBounds(155, 368, 106, 23);
+			okButton.setBounds(163, 435, 106, 23);
 			contentPanel.add(okButton);
 			okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -186,7 +186,7 @@ public class FormularioReservas extends JDialog {
 		}
 		{
 			JButton cancelButton = new JButton("Cancelar");
-			cancelButton.setBounds(271, 368, 101, 23);
+			cancelButton.setBounds(274, 435, 101, 23);
 			contentPanel.add(cancelButton);
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -195,6 +195,21 @@ public class FormularioReservas extends JDialog {
 			});
 			cancelButton.setActionCommand("Cancel");
 		}
+		
+		JLabel NotaPropiedadesReserva = new JLabel("<html>Seleccione las caracter\u00EDsticas de su reserva, en<br> caso contrario se le aplicar\u00E1n unos por defecto.</html>");
+		NotaPropiedadesReserva.setBounds(30, 379, 238, 30);
+		contentPanel.add(NotaPropiedadesReserva);
+		
+		JButton btnComponentesR = new JButton("Caracter\u00EDsticas");
+		btnComponentesR.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Codigo para abrir las características de la reserva
+				caracteristicasReserva car=new caracteristicasReserva();
+				car.setVisible(true);
+			}
+		});
+		btnComponentesR.setBounds(271, 379, 104, 30);
+		contentPanel.add(btnComponentesR);
 		if(DNIcliente!=null){
 			label_1.setVisible(false);
 			 lblDni= new JLabel("Rellene con atención los datos requeridos para la reserva:");

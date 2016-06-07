@@ -174,7 +174,6 @@ public class adminInterfaz extends JFrame {
 					JOptionPane.showMessageDialog(null, "Lo sentimos, en este momento no existen habitaciones disponibles.");
 				}else{
 					FormularioReservas fr=new FormularioReservas(Integer.parseInt(idAdministradorNow));
-					fr.setModal(true);
 					fr.setVisible(true);
 					tablaReservas_1.setModel(DbUtils.resultSetToTableModel(admin.verReservas()));
 				}

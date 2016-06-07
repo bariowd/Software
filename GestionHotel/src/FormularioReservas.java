@@ -4,6 +4,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -27,7 +28,7 @@ import java.awt.Font;
 
 
 @SuppressWarnings("serial")
-public class FormularioReservas extends JDialog {
+public class FormularioReservas extends JFrame {
 
 	
 	Connection connection=conexionSQL.dbConector();
@@ -208,6 +209,7 @@ public class FormularioReservas extends JDialog {
 				caracteristicasReserva car=new caracteristicasReserva();
 				car.setVisible(true);
 				car.setModal(true);
+
 			}
 		});
 		btnComponentesR.setBounds(30, 388, 345, 21);

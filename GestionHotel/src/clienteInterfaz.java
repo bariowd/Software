@@ -92,7 +92,6 @@ public class clienteInterfaz extends JFrame {
 		btnRealizarEserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FormularioReservas fr=new FormularioReservas(DNI);
-				fr.setModal(true);
 				fr.setVisible(true);
 				tableReservas.setModel(DbUtils.resultSetToTableModel(cliente.verReservas()));
 			}

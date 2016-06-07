@@ -23,6 +23,7 @@ import com.toedter.calendar.JCalendar;
 import javax.swing.JComboBox;
 
 import java.awt.Label;
+import java.awt.Font;
 
 
 @SuppressWarnings("serial")
@@ -65,7 +66,7 @@ public class FormularioReservas extends JDialog {
 	}
 	@SuppressWarnings("rawtypes")
 	public void inicializar() {
-		setBounds(400, 175, 422, 498);
+		setBounds(400, 175, 423, 520);
 		setResizable(false);
 		setTitle("Formulario para la Reserva");
 		getContentPane().setLayout(new BorderLayout());
@@ -119,11 +120,11 @@ public class FormularioReservas extends JDialog {
 				ay.setVisible(true);
 			}
 		});
-		btnHelp.setBounds(33, 426, 33, 30);
+		btnHelp.setBounds(33, 445, 33, 30);
 		contentPanel.add(btnHelp);
 		{
 			JButton okButton = new JButton("Siguiente");
-			okButton.setBounds(163, 435, 106, 23);
+			okButton.setBounds(163, 454, 106, 23);
 			contentPanel.add(okButton);
 			okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -186,7 +187,7 @@ public class FormularioReservas extends JDialog {
 		}
 		{
 			JButton cancelButton = new JButton("Cancelar");
-			cancelButton.setBounds(274, 435, 101, 23);
+			cancelButton.setBounds(274, 454, 101, 23);
 			contentPanel.add(cancelButton);
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -196,8 +197,8 @@ public class FormularioReservas extends JDialog {
 			cancelButton.setActionCommand("Cancel");
 		}
 		
-		JLabel NotaPropiedadesReserva = new JLabel("<html>Seleccione las caracter\u00EDsticas de su reserva, en<br> caso contrario se le aplicar\u00E1n unos por defecto.</html>");
-		NotaPropiedadesReserva.setBounds(30, 379, 238, 30);
+		JLabel NotaPropiedadesReserva = new JLabel("Seleccione las caracteristicas de su reserva:");
+		NotaPropiedadesReserva.setBounds(30, 357, 345, 20);
 		contentPanel.add(NotaPropiedadesReserva);
 		
 		JButton btnComponentesR = new JButton("Caracter\u00EDsticas");
@@ -206,10 +207,16 @@ public class FormularioReservas extends JDialog {
 				//Codigo para abrir las características de la reserva
 				caracteristicasReserva car=new caracteristicasReserva();
 				car.setVisible(true);
+				car.setModal(true);
 			}
 		});
-		btnComponentesR.setBounds(271, 379, 104, 30);
+		btnComponentesR.setBounds(30, 388, 345, 21);
 		contentPanel.add(btnComponentesR);
+		
+		JLabel lblNewLabel = new JLabel("(En caso contrario se le asignaran unas por defecto)");
+		lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 10));
+		lblNewLabel.setBounds(30, 420, 345, 14);
+		contentPanel.add(lblNewLabel);
 		if(DNIcliente!=null){
 			label_1.setVisible(false);
 			 lblDni= new JLabel("Rellene con atención los datos requeridos para la reserva:");

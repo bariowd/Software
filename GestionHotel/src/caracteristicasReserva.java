@@ -64,10 +64,28 @@ public class caracteristicasReserva extends JDialog {
 			tabbedPane.addTab("Comedor", panel1);
 			
 			JPanel panel2=new JPanel();
+			panel2.setLayout(null);
 			JLabel et_p2=new JLabel("Estas en el panel 2");
+			et_p2.setBounds(200, 5, 90, 14);
 			panel2.add(et_p2);
 			
 			tabbedPane.addTab("Gimnasio & Valneario", panel2);
+			
+			JPanel panel3=new JPanel();
+			panel3.setLayout(null);
+			JLabel et_p3=new JLabel("Estas en el panel 3");
+			et_p3.setBounds(200, 5, 90, 14);
+			panel3.add(et_p3);
+			
+			tabbedPane.addTab("Complementos de la habitación", panel3);
+			
+			JPanel panel4=new JPanel();
+			panel4.setLayout(null);
+			JLabel et_p4=new JLabel("Estas en el panel 4");
+			et_p4.setBounds(200, 5, 90, 14);
+			panel4.add(et_p4);
+			
+			tabbedPane.addTab("Parking", panel4);
 			
 
 			//tabbedPane.addTab("Menu1", );

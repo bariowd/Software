@@ -35,6 +35,7 @@ public class caracteristicasReserva extends JDialog {
 		setTitle("Características de la Reserva");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
+		JTabbedPane tabbedPane;
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBounds(0, 269, 496, 33);
@@ -44,6 +45,8 @@ public class caracteristicasReserva extends JDialog {
 				JButton okButton = new JButton("Aceptar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
+						
+						
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -57,12 +60,12 @@ public class caracteristicasReserva extends JDialog {
 						setVisible(false);
 					}
 				});
-				cancelButton.setActionCommand("Cancel");
+				cancelButton.setActionCommand("Cancelar");
 				buttonPane.add(cancelButton);
 			}
 		}
 		{
-			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+			tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			tabbedPane.setBounds(0, 0, 496, 269);
 			getContentPane().add(tabbedPane);
 			
@@ -148,7 +151,8 @@ public class caracteristicasReserva extends JDialog {
 			
 			JPanel panel3=new JPanel();
 			panel3.setLayout(null);
-			JLabel et_p3=new JLabel("<html><body>Dispone de una serie de complementos para mejorar su estancia en <br> el hotel, seleccione los que desee  durante su estancia en el hotel </body></html>");
+			JLabel et_p3=new JLabel("<html><body>Dispone de una serie de complementos para mejorar su estancia en <br> el hotel, seleccione los que desee  durante su estancia: </body></html>");
+			et_p3.setFont(new Font("Tahoma", Font.PLAIN, 12));
 			et_p3.setBounds(20, 11, 447, 56);
 			panel3.add(et_p3);
 			
@@ -199,8 +203,6 @@ public class caracteristicasReserva extends JDialog {
 			rdbtnNoQuieroParking.setBounds(284, 178, 165, 23);
 			panel4.add(rdbtnNoQuieroParking);
 			
-
-			//tabbedPane.addTab("Menu1", );
 		}
 		
 		

@@ -10,8 +10,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
@@ -24,7 +27,7 @@ import java.awt.Font;
 public class caracteristicasReserva extends JDialog {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
-
+	Connection connection=conexionSQL.dbConector();
 	/**
 	 * Create the dialog.
 	 */
@@ -45,9 +48,11 @@ public class caracteristicasReserva extends JDialog {
 	JCheckBox chckbxNewCheckBox;
 	JRadioButton rdbtnPensinMedia;
 	JRadioButton rdbtnPensinCompleta;
+	String dniCliente;
 	
-	public caracteristicasReserva() {
+	public caracteristicasReserva(String dniC) {
 
+		dniCliente=dniC;
 		setBounds(400, 175, 502, 331);
 		setResizable(false);
 		setTitle("Características de la Reserva");
@@ -63,8 +68,32 @@ public class caracteristicasReserva extends JDialog {
 				JButton okButton = new JButton("Aceptar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						
-						
+						MetodosCaracteristicasR met=new MetodosCaracteristicasR(dniCliente);
+					/*	
+						rdbtnNoQuieroParking;
+						rdbtnReservaConPlaza;
+						chckbxServicioDeHabitaciones;
+						cbTV;
+						cbMinibar;
+						cbCaja;
+						cbCama;
+						chckbxMasaje;
+						chckbxSauna;
+						chckbxBaoTurco;
+						chckbxJakuzzi;
+						chckbxGimnasio;
+						numNinos;
+						numAdultos;
+						chckbxNewCheckBox;
+						rdbtnPensinMedia;
+						rdbtnPensinCompleta;
+						dniCliente;
+					*/
+						if(rdbtnPensinCompleta.isSelected()){
+							met.insertaExtra("Pension completa", 30);
+	
+						}
+						setVisible(false);
 					}
 				});
 				okButton.setActionCommand("OK");

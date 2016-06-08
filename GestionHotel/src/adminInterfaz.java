@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import net.proteanit.sql.DbUtils;
@@ -175,6 +176,7 @@ public class adminInterfaz extends JFrame {
 				}else{
 					FormularioReservas fr=new FormularioReservas(Integer.parseInt(idAdministradorNow));
 					fr.setVisible(true);
+
 					tablaReservas_1.setModel(DbUtils.resultSetToTableModel(admin.verReservas()));
 				}
 			}

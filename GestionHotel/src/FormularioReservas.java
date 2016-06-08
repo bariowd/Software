@@ -45,8 +45,10 @@ public class FormularioReservas extends JFrame {
 	JComboBox comboBox;
 	@SuppressWarnings("rawtypes")
 	JComboBox comboBoxDNI;
+	JButton btnComponentesR;
 	String fechaentrada;
 	String fechasalida;
+	String dniC;
 	
 	int contador=0;//contador para distinguir si es la fecha deentrada si es un 0, o un 1 si es fecha de salida
 
@@ -152,18 +154,12 @@ public class FormularioReservas extends JFrame {
 							
 							JOptionPane.showMessageDialog(null, "Seleccione fecha de salida y habitación");
 							textDNI.setEditable(false);
+							btnComponentesR.setEnabled(true);
 							
 							if(DNIcliente==null){
 								comboBoxDNI.setEditable(false);
 							}
-							comboHabitaciones();
-						}else{
-							int day=calendar.getCalendar().get(Calendar.DAY_OF_MONTH);
-							int month=calendar.getCalendar().get(Calendar.MONTH);
-							month=month+1;
-							int year=calendar.getCalendar().get(Calendar.YEAR);
-							fechasalida=day+"/"+month+"/"+year;
-							String dniC;
+							
 							if(DNIcliente!=null){
 								dniC=DNIcliente;
 							}else{
@@ -173,6 +169,16 @@ public class FormularioReservas extends JFrame {
 									dniC=textDNI.getText();
 								}
 							}
+							
+							
+							comboHabitaciones();
+						}else{
+							int day=calendar.getCalendar().get(Calendar.DAY_OF_MONTH);
+							int month=calendar.getCalendar().get(Calendar.MONTH);
+							month=month+1;
+							int year=calendar.getCalendar().get(Calendar.YEAR);
+							fechasalida=day+"/"+month+"/"+year;
+
 							
 							metodosR.Reservar(fechaentrada, fechasalida, comboBox.getSelectedItem().toString(), idAdmin, dniC);
 							dispose();
@@ -202,14 +208,15 @@ public class FormularioReservas extends JFrame {
 		NotaPropiedadesReserva.setBounds(30, 357, 345, 20);
 		contentPanel.add(NotaPropiedadesReserva);
 		
-		JButton btnComponentesR = new JButton("Caracter\u00EDsticas");
+		btnComponentesR = new JButton("Caracter\u00EDsticas");
+		btnComponentesR.setEnabled(false);
 		btnComponentesR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Codigo para abrir las características de la reserva
-				caracteristicasReserva car=new caracteristicasReserva();
-				car.setVisible(true);
-				car.setModal(true);
 
+					caracteristicasReserva car=new caracteristicasReserva(dniC);
+					car.setVisible(true);
+					car.setModal(true);
 			}
 		});
 		btnComponentesR.setBounds(30, 388, 345, 21);

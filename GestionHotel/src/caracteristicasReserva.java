@@ -28,6 +28,24 @@ public class caracteristicasReserva extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
+	JRadioButton rdbtnNoQuieroParking;
+	JRadioButton rdbtnReservaConPlaza;
+	JCheckBox chckbxServicioDeHabitaciones;
+	JCheckBox cbTV;
+	JCheckBox cbMinibar;
+	JCheckBox cbCaja;
+	JCheckBox cbCama;
+	JCheckBox chckbxMasaje;
+	JCheckBox chckbxSauna;
+	JCheckBox chckbxBaoTurco;
+	JCheckBox chckbxJakuzzi;
+	JCheckBox chckbxGimnasio;
+	JSpinner numNinos;
+	JSpinner numAdultos;
+	JCheckBox chckbxNewCheckBox;
+	JRadioButton rdbtnPensinMedia;
+	JRadioButton rdbtnPensinCompleta;
+	
 	public caracteristicasReserva() {
 
 		setBounds(400, 175, 502, 331);
@@ -77,12 +95,12 @@ public class caracteristicasReserva extends JDialog {
 			
 			tabbedPane.addTab("Comedor", panel1);
 			
-			JRadioButton rdbtnPensinCompleta = new JRadioButton("Pensi\u00F3n completa");
+			rdbtnPensinCompleta = new JRadioButton("Pensi\u00F3n completa");
 			buttonGroup.add(rdbtnPensinCompleta);
 			rdbtnPensinCompleta.setBounds(35, 89, 174, 23);
 			panel1.add(rdbtnPensinCompleta);
 			
-			JRadioButton rdbtnPensinMedia = new JRadioButton("Pensi\u00F3n media");
+			rdbtnPensinMedia = new JRadioButton("Pensi\u00F3n media");
 			rdbtnPensinMedia.setSelected(true);
 			buttonGroup.add(rdbtnPensinMedia);
 			rdbtnPensinMedia.setBounds(35, 123, 174, 23);
@@ -93,7 +111,7 @@ public class caracteristicasReserva extends JDialog {
 			panel1.add(panel);
 			panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione su tipo de pensión:"));
 			
-			JCheckBox chckbxNewCheckBox = new JCheckBox("Extra: Bebidas alcoh\u00F3licas");
+			chckbxNewCheckBox = new JCheckBox("Extra: Bebidas alcoh\u00F3licas");
 			chckbxNewCheckBox.setBounds(35, 170, 206, 23);
 			panel1.add(chckbxNewCheckBox);
 			
@@ -114,11 +132,11 @@ public class caracteristicasReserva extends JDialog {
 			SpinnerModel smA = new SpinnerNumberModel(1, 1, 4, 1);
 			SpinnerModel smN = new SpinnerNumberModel(0, 0, 4, 1);
 			
-			JSpinner numAdultos = new JSpinner(smA);
+			numAdultos = new JSpinner(smA);
 			numAdultos.setBounds(115, 26, 93, 20);
 			panel_1.add(numAdultos);
 			
-			JSpinner numNinos = new JSpinner(smN);
+			numNinos = new JSpinner(smN);
 			numNinos.setBounds(115, 58, 93, 20);
 			panel_1.add(numNinos);
 			
@@ -129,23 +147,23 @@ public class caracteristicasReserva extends JDialog {
 			
 			tabbedPane.addTab("Gimnasio & Balneario", panel2);
 			
-			JCheckBox chckbxGimnasio = new JCheckBox("Gimnasio");
+			chckbxGimnasio = new JCheckBox("Gimnasio");
 			chckbxGimnasio.setBounds(51, 63, 97, 23);
 			panel2.add(chckbxGimnasio);
 			
-			JCheckBox chckbxJakuzzi = new JCheckBox("Jakuzzi");
+			chckbxJakuzzi = new JCheckBox("Jakuzzi");
 			chckbxJakuzzi.setBounds(51, 117, 97, 23);
 			panel2.add(chckbxJakuzzi);
 			
-			JCheckBox chckbxBaoTurco = new JCheckBox("Ba\u00F1o Turco");
+			chckbxBaoTurco = new JCheckBox("Ba\u00F1o Turco");
 			chckbxBaoTurco.setBounds(236, 63, 97, 23);
 			panel2.add(chckbxBaoTurco);
 			
-			JCheckBox chckbxSauna = new JCheckBox("Sauna");
+			chckbxSauna = new JCheckBox("Sauna");
 			chckbxSauna.setBounds(236, 117, 97, 23);
 			panel2.add(chckbxSauna);
 			
-			JCheckBox chckbxMasaje = new JCheckBox("Masajes");
+			chckbxMasaje = new JCheckBox("Masajes");
 			chckbxMasaje.setBounds(51, 175, 97, 23);
 			panel2.add(chckbxMasaje);
 			
@@ -158,23 +176,23 @@ public class caracteristicasReserva extends JDialog {
 			
 			tabbedPane.addTab("Complementos de la habitación", panel3);
 			
-			JCheckBox cbCama = new JCheckBox("Cama Supletoria");
+			cbCama = new JCheckBox("Cama Supletoria");
 			cbCama.setBounds(20, 100, 139, 23);
 			panel3.add(cbCama);
 			
-			JCheckBox cbCaja = new JCheckBox("Caja fuerte");
+			cbCaja = new JCheckBox("Caja fuerte");
 			cbCaja.setBounds(20, 156, 97, 23);
 			panel3.add(cbCaja);
 			
-			JCheckBox cbMinibar = new JCheckBox("Minibar");
+			cbMinibar = new JCheckBox("Minibar");
 			cbMinibar.setBounds(192, 100, 97, 23);
 			panel3.add(cbMinibar);
 			
-			JCheckBox cbTV = new JCheckBox("TV de pago");
+			cbTV = new JCheckBox("TV de pago");
 			cbTV.setBounds(192, 156, 97, 23);
 			panel3.add(cbTV);
 			
-			JCheckBox chckbxServicioDeHabitaciones = new JCheckBox("Servicio de habitaciones");
+			chckbxServicioDeHabitaciones = new JCheckBox("Servicio de habitaciones");
 			chckbxServicioDeHabitaciones.setBounds(334, 100, 151, 23);
 			panel3.add(chckbxServicioDeHabitaciones);
 			
@@ -192,12 +210,12 @@ public class caracteristicasReserva extends JDialog {
 			lblSiTieneVehculo.setBounds(10, 130, 471, 30);
 			panel4.add(lblSiTieneVehculo);
 			
-			JRadioButton rdbtnReservaConPlaza = new JRadioButton("Reservar plaza de parking.");
+			rdbtnReservaConPlaza = new JRadioButton("Reservar plaza de parking.");
 			buttonGroup_1.add(rdbtnReservaConPlaza);
 			rdbtnReservaConPlaza.setBounds(33, 178, 210, 23);
 			panel4.add(rdbtnReservaConPlaza);
 			
-			JRadioButton rdbtnNoQuieroParking = new JRadioButton("No quiero parking...");
+			rdbtnNoQuieroParking = new JRadioButton("No quiero parking...");
 			rdbtnNoQuieroParking.setSelected(true);
 			buttonGroup_1.add(rdbtnNoQuieroParking);
 			rdbtnNoQuieroParking.setBounds(284, 178, 165, 23);

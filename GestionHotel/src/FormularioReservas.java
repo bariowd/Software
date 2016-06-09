@@ -21,6 +21,8 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JCalendar;
 
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JComboBox;
 
 import java.awt.Label;
@@ -150,12 +152,10 @@ public class FormularioReservas extends JFrame {
 							fechaentrada=day+"/"+month+"/"+year;
 							System.out.println(fechaentrada);
 							contador++;
-							okButton.setText("Reservar");
 							
 							JOptionPane.showMessageDialog(null, "Seleccione fecha de salida y habitación");
 							textDNI.setEditable(false);
-							btnComponentesR.setEnabled(true);
-							
+							okButton.setText("Reservar");
 							if(DNIcliente==null){
 								comboBoxDNI.setEditable(false);
 							}
@@ -172,7 +172,7 @@ public class FormularioReservas extends JFrame {
 							
 							
 							comboHabitaciones();
-						}else{
+						}else if(contador==1){
 							int day=calendar.getCalendar().get(Calendar.DAY_OF_MONTH);
 							int month=calendar.getCalendar().get(Calendar.MONTH);
 							month=month+1;
@@ -180,7 +180,15 @@ public class FormularioReservas extends JFrame {
 							fechasalida=day+"/"+month+"/"+year;
 
 							
-							metodosR.Reservar(fechaentrada, fechasalida, comboBox.getSelectedItem().toString(), idAdmin, dniC);
+							int numReserva=metodosR.Reservar(fechaentrada, fechasalida, comboBox.getSelectedItem().toString(), idAdmin, dniC);
+							
+							int resp=JOptionPane.showConfirmDialog(null, "¿Desea elegir los extras de su reserva ahora?","Configuración de la reserva",JOptionPane.YES_NO_OPTION);
+							if(resp==JOptionPane.YES_OPTION){
+
+								caracteristicasReserva car=new caracteristicasReserva(dniC,numReserva);
+								car.setVisible(true);
+								car.setModal(true);
+							}
 							dispose();
 						}
 						
@@ -213,10 +221,6 @@ public class FormularioReservas extends JFrame {
 		btnComponentesR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//Codigo para abrir las características de la reserva
-
-					caracteristicasReserva car=new caracteristicasReserva(dniC);
-					car.setVisible(true);
-					car.setModal(true);
 			}
 		});
 		btnComponentesR.setBounds(30, 388, 345, 21);

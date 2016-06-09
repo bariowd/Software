@@ -36,7 +36,7 @@ public class clienteInterfaz extends JFrame {
 
 		cliente=new metodosCliente(DNI);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(375, 200, 720, 237);
+		setBounds(375, 200, 717, 280);
 		setResizable(false);
 		setTitle("Mis reservas");
 		contentPane = new JPanel();
@@ -182,6 +182,32 @@ public class clienteInterfaz extends JFrame {
 		});
 		btnCerrarSesin.setBounds(545, 11, 119, 23);
 		contentPane.add(btnCerrarSesin);
+		
+		JButton btnCaractersticasDeMi = new JButton("Caracter\u00EDsticas de mi reserva");
+		btnCaractersticasDeMi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row;
+				int idRes;
+					row=tableReservas.getSelectedRow();
+					if(row==-1){
+						JOptionPane.showMessageDialog(null, "Debe seleccionar la reserva a modificar.","Advertencia",JOptionPane.WARNING_MESSAGE);
+					}else{
+						
+						idRes=Integer.parseInt(tableReservas.getValueAt(row,0).toString());
+						caracteristicasReserva r=new caracteristicasReserva(DNI,idRes);
+						r.setModal(true);
+						r.setVisible(true);
+						
+						tableReservas.setModel(DbUtils.resultSetToTableModel(cliente.verReservas()));	
+					}
+			}
+		});
+		btnCaractersticasDeMi.setBounds(10, 217, 246, 23);
+		contentPane.add(btnCaractersticasDeMi);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(293, 217, 167, 23);
+		contentPane.add(btnNewButton);
 		
 	}
 }

@@ -41,18 +41,30 @@ public class caracteristicasReserva extends JDialog {
 	JCheckBox chckbxMasaje;
 	JCheckBox chckbxSauna;
 	JCheckBox chckbxBaoTurco;
-	JCheckBox chckbxJakuzzi;
+	JCheckBox chckbxJacuzzi;
 	JCheckBox chckbxGimnasio;
 	JSpinner numNinos;
 	JSpinner numAdultos;
-	JCheckBox chckbxNewCheckBox;
+	JCheckBox cbAlcohol;
 	JRadioButton rdbtnPensinMedia;
 	JRadioButton rdbtnPensinCompleta;
 	String dniCliente;
-	
+	int idReserva;
 	public caracteristicasReserva(String dniC) {
 
 		dniCliente=dniC;
+		iniciar();
+	}
+	
+	public caracteristicasReserva(String dniC, int idRes){
+		dniCliente=dniC;
+		idReserva=idRes;
+		iniciar();		
+	}
+	
+	public void iniciar(){
+
+
 		setBounds(400, 175, 502, 331);
 		setResizable(false);
 		setTitle("Características de la Reserva");
@@ -68,31 +80,62 @@ public class caracteristicasReserva extends JDialog {
 				JButton okButton = new JButton("Aceptar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						MetodosCaracteristicasR met=new MetodosCaracteristicasR(dniCliente);
+						MetodosCaracteristicasR met=new MetodosCaracteristicasR(dniCliente,idReserva);
 					/*	
 						rdbtnNoQuieroParking;
 						rdbtnReservaConPlaza;
 						chckbxServicioDeHabitaciones;
 						cbTV;
 						cbMinibar;
-						cbCaja;
-						cbCama;
-						chckbxMasaje;
-						chckbxSauna;
-						chckbxBaoTurco;
-						chckbxJakuzzi;
-						chckbxGimnasio;
-						numNinos;
-						numAdultos;
-						chckbxNewCheckBox;
-						rdbtnPensinMedia;
-						rdbtnPensinCompleta;
-						dniCliente;
 					*/
+						if(rdbtnReservaConPlaza.isSelected()){
+							met.insertaExtra("Plaza de garaje", 15);
+						}
+						if(chckbxServicioDeHabitaciones.isSelected()){
+							met.insertaExtra("Servicio de habitaciones", 18);
+						}
+						if(cbTV.isSelected()){
+							met.insertaExtra("Television de pago", 8);
+						}
+						if(cbMinibar.isSelected()){
+							met.insertaExtra("Minibar", 20);
+						}
+						if(cbCaja.isSelected()){
+							met.insertaExtra("Caja fuerte", 12);
+						}
+						if(cbCama.isSelected()){
+							met.insertaExtra("Cama supletoria", 12);
+						}
+						if(chckbxMasaje.isSelected()){
+							met.insertaExtra("Masaje", 35);
+						}
+						if(chckbxSauna.isSelected()){
+							met.insertaExtra("Sauna", 18);
+						}
+						if(chckbxBaoTurco.isSelected()){
+							met.insertaExtra("Bano Turco", 20);
+						}
+						if(chckbxJacuzzi.isSelected()){
+							met.insertaExtra("Jacuzzi", 30);
+						}
+						if(chckbxGimnasio.isSelected()){
+							met.insertaExtra("Gimnasio", 10);
+						}
+						
+						if(cbAlcohol.isSelected()){
+							met.insertaExtra("Pension con bebidas alcoholicas", 15);
+						}
 						if(rdbtnPensinCompleta.isSelected()){
 							met.insertaExtra("Pension completa", 30);
 	
 						}
+						if(rdbtnPensinMedia.isSelected()){
+							met.insertaExtra("Media pension", 15);
+						}
+						
+						met.insertaExtra("Numero de ninos", Integer.parseInt(numNinos.getValue().toString()));
+						met.insertaExtra("Numero de adultos", Integer.parseInt(numAdultos.getValue().toString()));
+						
 						setVisible(false);
 					}
 				});
@@ -140,9 +183,9 @@ public class caracteristicasReserva extends JDialog {
 			panel1.add(panel);
 			panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione su tipo de pensión:"));
 			
-			chckbxNewCheckBox = new JCheckBox("Extra: Bebidas alcoh\u00F3licas");
-			chckbxNewCheckBox.setBounds(35, 170, 206, 23);
-			panel1.add(chckbxNewCheckBox);
+			cbAlcohol = new JCheckBox("Extra: Bebidas alcoh\u00F3licas");
+			cbAlcohol.setBounds(35, 170, 206, 23);
+			panel1.add(cbAlcohol);
 			
 			JPanel panel_1 = new JPanel();
 			panel_1.setBounds(263, 63, 218, 100);
@@ -180,9 +223,9 @@ public class caracteristicasReserva extends JDialog {
 			chckbxGimnasio.setBounds(51, 63, 97, 23);
 			panel2.add(chckbxGimnasio);
 			
-			chckbxJakuzzi = new JCheckBox("Jakuzzi");
-			chckbxJakuzzi.setBounds(51, 117, 97, 23);
-			panel2.add(chckbxJakuzzi);
+			chckbxJacuzzi = new JCheckBox("Jacuzzi");
+			chckbxJacuzzi.setBounds(51, 117, 97, 23);
+			panel2.add(chckbxJacuzzi);
 			
 			chckbxBaoTurco = new JCheckBox("Ba\u00F1o Turco");
 			chckbxBaoTurco.setBounds(236, 63, 97, 23);
@@ -253,5 +296,6 @@ public class caracteristicasReserva extends JDialog {
 		}
 		
 		
+	
 	}
 }

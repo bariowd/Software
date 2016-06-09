@@ -52,8 +52,32 @@ public class metodosAdmin{
 	
 
 	public int eliminarReserva(String idRes, String nHab){
+		String dniborrar = null;
+		try{
+
+			String query="SELECT * FROM Reservas WHERE idReserva='"+idRes+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			dniborrar=rs.getString("DNI");
+			rs.close();
+			pst.close();
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e);
+		}
+		
 		try{
 			String query="delete from Reservas where idReserva='"+idRes+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			pst.execute();
+			
+			pst.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+		try{
+			String query="delete from Caracteristicasr where DNI='"+dniborrar+"' AND idRes='"+idRes+"'";
 			PreparedStatement pst=connection.prepareStatement(query);
 			pst.execute();
 			

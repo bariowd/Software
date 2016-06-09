@@ -44,7 +44,7 @@ public class adminInterfaz extends JFrame {
 	public adminInterfaz(String idAd) {
 		idAdministradorNow=idAd;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(325, 150, 734, 500);
+		setBounds(325, 150, 734, 558);
 		setResizable(false);
 		setTitle("Vista Administrador");
 		contentPane = new JPanel();
@@ -177,7 +177,6 @@ public class adminInterfaz extends JFrame {
 					FormularioReservas fr=new FormularioReservas(Integer.parseInt(idAdministradorNow));
 					fr.setVisible(true);
 
-					tablaReservas_1.setModel(DbUtils.resultSetToTableModel(admin.verReservas()));
 				}
 			}
 		});
@@ -275,6 +274,37 @@ public class adminInterfaz extends JFrame {
 		});
 		btnCrearCopiaDe.setBounds(319, 17, 194, 23);
 		contentPane.add(btnCrearCopiaDe);
+		
+		JButton btnCaracteristicasReserva = new JButton("Caracteristicas de la reserva");
+		btnCaracteristicasReserva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = tablaReservas_1.getSelectedRow();
+				String dniC;
+				int idRes;
+				if(row==-1){
+					JOptionPane.showMessageDialog(null, "Debe seleccionar la reserva a modificar.","Advertencia",JOptionPane.WARNING_MESSAGE);
+				}else{
+					
+					dniC=tablaReservas_1.getValueAt(row,5).toString();
+					idRes=Integer.parseInt(tablaReservas_1.getValueAt(row, 0).toString());
+					caracteristicasReserva mRes=new caracteristicasReserva(dniC,idRes);
+					mRes.setModal(true);
+					mRes.setVisible(true);
+					
+				}
+			}
+		});
+		btnCaracteristicasReserva.setBounds(20, 479, 257, 23);
+		contentPane.add(btnCaracteristicasReserva);
+		
+		JButton btnAct = new JButton("Actualizar reservas");
+		btnAct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tablaReservas_1.setModel(DbUtils.resultSetToTableModel(admin.verReservas()));
+			}
+		});
+		btnAct.setBounds(319, 479, 134, 23);
+		contentPane.add(btnAct);
 		
 	}
 	

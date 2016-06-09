@@ -9,7 +9,9 @@ public class metodosReservas {
 	
 	Connection connection=conexionSQL.dbConector();
 	
-	public void Reservar(String fechaentrada, String fechasalida, String nHab, int idAdmin,String DNIcliente){
+	public int Reservar(String fechaentrada, String fechasalida, String nHab, int idAdmin,String DNIcliente){
+		
+		int idDeLaReserva=0;
 		
 		try{
 			String query="insert into Reservas (fecha_entrada, fecha_salida, nHabitacion, idAdministrador, DNI) values (?,?,?,?,?)";
@@ -30,6 +32,20 @@ public class metodosReservas {
 		}
 		
 		try{
+
+			String query="SELECT * FROM Reservas WHERE nHabitacion='"+nHab+"' AND DNI='"+DNIcliente+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			idDeLaReserva=Integer.parseInt(rs.getString("idReserva"));
+			rs.close();
+			pst.close();
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e);
+		}
+		
+		
+		
+		try{
 			String query="update Habitaciones set estado='ocupado' where nHabitacion='"+nHab+"'";
 			PreparedStatement pst=connection.prepareStatement(query);
 			pst.execute();
@@ -38,6 +54,8 @@ public class metodosReservas {
 		}catch(Exception e1){
 			e1.printStackTrace();
 		}
+		
+		return idDeLaReserva;
 	}
 	
 	public boolean existenHabitacionesLibres(){

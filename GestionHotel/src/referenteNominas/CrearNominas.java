@@ -28,7 +28,7 @@ public class CrearNominas {
 
 	public void generar(){
 		ArrayList<ArrayList<XSSFCell>> listaDatos = new ArrayList<>();
-		String rutaLecturaTXT="c.xlsx";
+		String rutaLecturaTXT="trabajadoresLIKEATHOME.xlsx";
 		Scanner lee=new Scanner(System.in);
 		
 		FileInputStream file = null;

@@ -164,6 +164,10 @@ public class metodosAdmin{
 			e1.printStackTrace();
 		}
 	}
+	
+	public void generaNominas(){
+		
+	}
 }
 
 

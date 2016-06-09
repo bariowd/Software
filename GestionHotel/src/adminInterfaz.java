@@ -331,7 +331,7 @@ public class adminInterfaz extends JFrame {
 		JButton btnNominas = new JButton("Nominas de los trabajadores");
 		btnNominas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				admin.generaNominas();
 			}
 		});
 		btnNominas.setBounds(20, 521, 257, 23);

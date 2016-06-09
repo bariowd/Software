@@ -198,16 +198,21 @@ public class clienteInterfaz extends JFrame {
 						r.setModal(true);
 						r.setVisible(true);
 						
-						tableReservas.setModel(DbUtils.resultSetToTableModel(cliente.verReservas()));	
 					}
 			}
 		});
 		btnCaractersticasDeMi.setBounds(10, 217, 246, 23);
 		contentPane.add(btnCaractersticasDeMi);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(293, 217, 167, 23);
-		contentPane.add(btnNewButton);
+		JButton btnActualizar = new JButton("Actualizar mis reservas");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				tableReservas.setModel(DbUtils.resultSetToTableModel(cliente.verReservas()));	
+			}
+		});
+		btnActualizar.setBounds(293, 217, 205, 23);
+		contentPane.add(btnActualizar);
 		
 	}
 }

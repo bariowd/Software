@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
+import referenteNominas.CrearNominas;
+
 
 
 
@@ -166,7 +168,8 @@ public class metodosAdmin{
 	}
 	
 	public void generaNominas(){
-		
+		CrearNominas CN=new CrearNominas();
+		CN.generar();
 	}
 }
 

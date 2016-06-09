@@ -53,22 +53,6 @@ public class metodosCliente extends metodosAdmin{
 			e.printStackTrace();
 		}
 		
-		/*try{
-
-			String query="SELECT * FROM Reservas WHERE DNI='"+getDNI()+"'";
-			PreparedStatement pst=connection.prepareStatement(query);
-			ResultSet rs=pst.executeQuery();
-			
-				while(rs.next()){
-					liberarHabitaciones(rs.getString("nHabitacion"));
-				}
-Revisar
-			rs.close();
-			pst.close();
-		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, e);
-		}*/
-		
 		try{
 			String query="delete from Caracteristicasr where DNI='"+getDNI()+"'";
 			PreparedStatement pst=connection.prepareStatement(query);

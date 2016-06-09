@@ -44,7 +44,7 @@ public class adminInterfaz extends JFrame {
 	public adminInterfaz(String idAd) {
 		idAdministradorNow=idAd;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(325, 150, 734, 558);
+		setBounds(325, 150, 734, 584);
 		setResizable(false);
 		setTitle("Vista Administrador");
 		contentPane = new JPanel();
@@ -327,6 +327,15 @@ public class adminInterfaz extends JFrame {
 		});
 		btnVerCaracteristicasDe.setBounds(479, 479, 227, 23);
 		contentPane.add(btnVerCaracteristicasDe);
+		
+		JButton btnNominas = new JButton("Nominas de los trabajadores");
+		btnNominas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnNominas.setBounds(20, 521, 257, 23);
+		contentPane.add(btnNominas);
 		
 	}
 	

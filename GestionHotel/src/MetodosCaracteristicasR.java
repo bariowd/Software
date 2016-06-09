@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
@@ -32,6 +33,30 @@ public class MetodosCaracteristicasR {
 		}catch(Exception e1){
 			e1.printStackTrace();
 		}
+	}
+	
+	public ResultSet verCaracteristicas(){
+		
+		try{
+			String query="SELECT * FROM Caracteristicasr where DNI='"+dniC+"' AND idRes='"+idRes+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+
+			//devolver=rs;                                                    ATENCION PERRADA
+			
+			return rs;
+			//rs.close();
+			//pst.close();
+		}catch(Exception e){
+			e.printStackTrace();
+
+
+			
+			return null;
+		}
+
+		//JOptionPane.showMessageDialog(null, devolver);
+		
 	}
 	
 }

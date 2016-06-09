@@ -180,7 +180,7 @@ public class adminInterfaz extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(20, 439, 158, 23);
+		btnNewButton.setBounds(20, 438, 158, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel clientslbl = new JLabel("");
@@ -282,7 +282,7 @@ public class adminInterfaz extends JFrame {
 				String dniC;
 				int idRes;
 				if(row==-1){
-					JOptionPane.showMessageDialog(null, "Debe seleccionar la reserva a modificar.","Advertencia",JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Debe seleccionar una reserva para seleccionar sus extras.","Advertencia",JOptionPane.WARNING_MESSAGE);
 				}else{
 					
 					dniC=tablaReservas_1.getValueAt(row,5).toString();
@@ -303,8 +303,30 @@ public class adminInterfaz extends JFrame {
 				tablaReservas_1.setModel(DbUtils.resultSetToTableModel(admin.verReservas()));
 			}
 		});
-		btnAct.setBounds(319, 479, 134, 23);
+		btnAct.setBounds(305, 479, 148, 23);
 		contentPane.add(btnAct);
+		
+		JButton btnVerCaracteristicasDe = new JButton("Ver caracteristicas de una reserva");
+		btnVerCaracteristicasDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int row = tablaReservas_1.getSelectedRow();
+				String dniC;
+				int idRes;
+				if(row==-1){
+					JOptionPane.showMessageDialog(null, "Debe seleccionar la reserva a modificar.","Advertencia",JOptionPane.WARNING_MESSAGE);
+				}else{
+					
+					dniC=tablaReservas_1.getValueAt(row,5).toString();
+					idRes=Integer.parseInt(tablaReservas_1.getValueAt(row, 0).toString());
+					VerCarRes ver=new VerCarRes(dniC, idRes);
+					ver.setVisible(true);
+					tablaReservas_1.setModel(DbUtils.resultSetToTableModel(admin.verReservas()));
+				}
+				
+			}
+		});
+		btnVerCaracteristicasDe.setBounds(479, 479, 227, 23);
+		contentPane.add(btnVerCaracteristicasDe);
 		
 	}
 	
@@ -333,5 +355,4 @@ public class adminInterfaz extends JFrame {
 	        }
 	    }
 	}
-	
 }

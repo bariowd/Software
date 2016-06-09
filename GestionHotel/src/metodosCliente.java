@@ -70,6 +70,16 @@ Revisar
 		}*/
 		
 		try{
+			String query="delete from Caracteristicasr where DNI='"+getDNI()+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			pst.execute();
+			
+			pst.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		try{
 			String query="delete from Reservas where DNI='"+getDNI()+"'";
 			PreparedStatement pst=connection.prepareStatement(query);
 			pst.execute();
@@ -78,6 +88,9 @@ Revisar
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+
+		
 		return 0;
 	}
 

@@ -50,6 +50,7 @@ public class caracteristicasReserva extends JDialog {
 	JRadioButton rdbtnPensinCompleta;
 	String dniCliente;
 	int idReserva;
+	
 	public caracteristicasReserva(String dniC) {
 
 		dniCliente=dniC;

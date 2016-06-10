@@ -44,7 +44,7 @@ public class adminInterfaz extends JFrame {
 	public adminInterfaz(String idAd) {
 		idAdministradorNow=idAd;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(325, 150, 734, 584);
+		setBounds(305, 130, 734, 584);
 		setResizable(false);
 		setTitle("Vista Administrador");
 		contentPane = new JPanel();
@@ -336,6 +336,29 @@ public class adminInterfaz extends JFrame {
 		});
 		btnNominas.setBounds(20, 521, 257, 23);
 		contentPane.add(btnNominas);
+		
+		JButton btnFactura = new JButton("Factura de la reserva");
+		btnFactura.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int row = tablaReservas_1.getSelectedRow();
+				String dniC;
+				String idRes;
+				int funciona;
+				if(row==-1){
+					JOptionPane.showMessageDialog(null, "Debe seleccionar la reserva para hacer la factura.","Advertencia",JOptionPane.WARNING_MESSAGE);
+				}else{
+					dniC=tablaReservas_1.getValueAt(row,5).toString();
+					idRes=tablaReservas_1.getValueAt(row, 0).toString();
+					Factura fac=new Factura(idRes);
+					funciona=fac.hazFactura();
+					if(funciona==1){
+					tablaReservas_1.setModel(DbUtils.resultSetToTableModel(admin.verReservas()));
+					}
+				}
+			}
+		});
+		btnFactura.setBounds(315, 521, 158, 23);
+		contentPane.add(btnFactura);
 		
 	}
 	

@@ -2,6 +2,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.swing.JOptionPane;
+
 
 
 public class metodosCliente extends metodosAdmin{
@@ -64,6 +66,20 @@ public class metodosCliente extends metodosAdmin{
 		}
 		
 		try{
+			String query="SELECT * FROM Reservas WHERE DNI='"+getDNI()+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			
+				while(rs.next()){
+					liberarHabitaciones(rs.getString("nHabitacion"));
+				}
+			rs.close();
+			pst.close();
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e);
+		}
+		
+		try{
 			String query="delete from Reservas where DNI='"+getDNI()+"'";
 			PreparedStatement pst=connection.prepareStatement(query);
 			pst.execute();
@@ -72,10 +88,21 @@ public class metodosCliente extends metodosAdmin{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
-
-		
+				
 		return 0;
+	}
+	
+	public void liberarHabitaciones(String numHab){
+		
+		try{
+			String query="update Habitaciones set estado='libre' where nHabitacion='"+numHab+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			
+			pst.execute();
+			pst.close();
+		}catch(Exception e1){
+			e1.printStackTrace();
+		}
 	}
 
 }

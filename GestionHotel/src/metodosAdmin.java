@@ -126,6 +126,16 @@ public class metodosAdmin{
 		}
 		
 		try{
+			String query="delete from Caracteristicasr where DNI='"+dniborrar+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			pst.execute();
+			
+			pst.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		try{
 
 			String query="SELECT * FROM Reservas WHERE DNI='"+dniborrar+"'";
 			PreparedStatement pst=connection.prepareStatement(query);

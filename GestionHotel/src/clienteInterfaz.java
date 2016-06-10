@@ -107,8 +107,10 @@ public class clienteInterfaz extends JFrame {
 						if(resp==JOptionPane.YES_OPTION){
 							cliente.eliminarCliente();
 							//////////////////////////////////////////////////////borrar todas las reservass de este cliente
-							JOptionPane.showMessageDialog(null, "Se cerrará la aplicación");
-							System.exit(0);
+							JOptionPane.showMessageDialog(null, "Se cerrará la sesión");
+							Login log=new Login();
+							log.setVisible(true);
+							dispose();
 					}
 
 				
@@ -211,7 +213,7 @@ public class clienteInterfaz extends JFrame {
 				tableReservas.setModel(DbUtils.resultSetToTableModel(cliente.verReservas()));	
 			}
 		});
-		btnActualizar.setBounds(293, 217, 205, 23);
+		btnActualizar.setBounds(293, 217, 387, 23);
 		contentPane.add(btnActualizar);
 		
 	}

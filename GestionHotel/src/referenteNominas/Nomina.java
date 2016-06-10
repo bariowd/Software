@@ -38,36 +38,6 @@ public class Nomina {
 		hazPDF();
 	}
 	
-	
-	public void prorrateo(Trabajador t){
-		if(t.getProrrata().toLowerCase().equals("si")){//en 12 nominas
-			//salario base
-			float salarioBaseMes=t.getSalarioBase()/14;
-			float complementoMes=t.getComplementos()/14;
-			float prorrateoMes=((salarioBaseMes+complementoMes+t.getTrienioDeAntiguedad())*2)/12;
-			float salario=salarioBaseMes+complementoMes+prorrateoMes+t.getTrienioDeAntiguedad();
-			
-			float contingenciasGeneralesMes=salario*(cuotas.cuotaObreraGeneralTrabajador/100);
-			float desempleo=salario*(cuotas.cuotaDesempleoTrabajador/100);
-			float formacion=salario*(cuotas.cuotaFormacionTrabajador/100);
-			float IRPFmes=salario*(t.getRetencionDelBrutoAnual()/100);
-			
-			float liquidoMes=salario-(contingenciasGeneralesMes+desempleo+formacion+IRPFmes);
-		
-		}else{//en 14 nominas
-			float salarioBaseMes=t.getSalarioBase()/14;
-			float complementoMes=t.getComplementos()/14;
-			float salario=salarioBaseMes+complementoMes+t.getTrienioDeAntiguedad();
-			
-			float contingenciasGeneralesMes=salario*(cuotas.cuotaObreraGeneralTrabajador/100);
-			float desempleo=salario*(cuotas.cuotaDesempleoTrabajador/100);
-			float formacion=salario*(cuotas.cuotaFormacionTrabajador/100);
-			float IRPFmes=salario*(t.getRetencionDelBrutoAnual()/100);
-			
-			float liquidoMes=salario-(contingenciasGeneralesMes+desempleo+formacion+IRPFmes);
-		}
-	}
-	
 	public void hazPDF() throws DocumentException, FileNotFoundException, ParseException{
 		   Document document = new Document(PageSize.A4, 35, 30, 50, 50);
 		   FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\Jake\\Desktop\\Nominas_2016_Grupo1\\C\\DefensaC.pdf");
@@ -101,7 +71,7 @@ public class Nomina {
 			   document.add(parrafo);
 			   PdfPTable tabla = new PdfPTable(1);
 			   PdfPCell celda1 = new PdfPCell();
-			   celda1.addElement(new Paragraph("TecnoProyect S.L."));
+			   celda1.addElement(new Paragraph("LikeAtHome S.L."));
 			   celda1.addElement(new Paragraph("CIF: P2472623l"));
 			   celda1.addElement(new Paragraph("Avenida de la facultad - 6"));
 			   celda1.addElement(new Paragraph("24001 León"));

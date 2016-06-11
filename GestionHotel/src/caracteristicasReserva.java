@@ -51,6 +51,9 @@ public class caracteristicasReserva extends JDialog {
 	String dniCliente;
 	int idReserva;
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public caracteristicasReserva(String dniC) {
 
 		dniCliente=dniC;
@@ -162,9 +165,6 @@ public class caracteristicasReserva extends JDialog {
 			
 			JPanel panel1=new JPanel();
 			panel1.setLayout(null);
-			JLabel et_p1=new JLabel("Estas en el panel 1");
-			et_p1.setBounds(200, 5, 165, 14);
-			panel1.add(et_p1);
 			
 			tabbedPane.addTab("Comedor", panel1);
 			
@@ -183,6 +183,7 @@ public class caracteristicasReserva extends JDialog {
 			panel.setBounds(10, 63, 231, 100);
 			panel1.add(panel);
 			panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione su tipo de pensión:"));
+			panel.setLayout(null);
 			
 			cbAlcohol = new JCheckBox("Extra: Bebidas alcoh\u00F3licas");
 			cbAlcohol.setBounds(35, 170, 206, 23);
@@ -212,6 +213,19 @@ public class caracteristicasReserva extends JDialog {
 			numNinos = new JSpinner(smN);
 			numNinos.setBounds(115, 58, 93, 20);
 			panel_1.add(numNinos);
+			
+			JLabel lblPrecios = new JLabel("Precios:");
+			lblPrecios.setFont(new Font("Tahoma", Font.BOLD, 11));
+			lblPrecios.setBounds(247, 170, 234, 23);
+			panel1.add(lblPrecios);
+			
+			JLabel lblPensionCompletaAdultos = new JLabel("Pension completa: Adultos 30, Ni\u00F1os 20");
+			lblPensionCompletaAdultos.setBounds(247, 195, 234, 14);
+			panel1.add(lblPensionCompletaAdultos);
+			
+			JLabel lblNewLabel = new JLabel("Pensi\u00F3n media: Adultos 15, Ni\u00F1os 10");
+			lblNewLabel.setBounds(247, 216, 234, 14);
+			panel1.add(lblNewLabel);
 			
 			
 			

@@ -37,6 +37,24 @@ public class Factura {
 	ArrayList<String> tipoCaracteristica=new ArrayList<String>();
 	ArrayList<Float> precios=new ArrayList<Float>();
 	
+	String tipoHab;
+	float pHab;
+	int numHabitacion;
+	
+	String nombreCliente;
+	String apellidosCliente;
+	String telfCliente;
+	
+	String fechaEntrada;
+	String fechaSalida;
+	
+	int numDias;
+	
+	String tipoPension;
+	float costePension;
+	float costePensionN;
+
+	
 	public Factura(String idReserva){
 		idRes=idReserva;
 	}
@@ -51,9 +69,9 @@ public class Factura {
 		   
 		   Trabajador t;
 		   PdfWriter.getInstance(document, fileOutputStream);
-
+		   
 		   document.open();
-	/////////////////////////////////////////////////////////////////////////////////////////////////CABECERA	   
+	/////////////////////////////////////////////////////////////////////////////////////////////////CABECERA
 		   PdfPTable tabla2 = new PdfPTable(2);
 		   PdfPCell celda2 = new PdfPCell();
 		   
@@ -103,39 +121,110 @@ public class Factura {
 		   document.add(new Paragraph(" "));
 
 		   //////////////////////////////////////////////////////////////////////////////////7FIN CABECERA
+		   fuente.setSize(16);
+		   fuente.setStyle(1);
+		   document.add(new Paragraph("_______________________________________________________________________________"));
+		   document.add(new Paragraph("Datos del cliente: ",fuente));
+		   document.add(new Paragraph("Nombre: "+nombreCliente));
+		   document.add(new Paragraph("Apellidos: "+apellidosCliente));
+		   document.add(new Paragraph("DNI: "+DNI));
+		   document.add(new Paragraph("Teléfono: "+telfCliente));
+		   document.add(new Paragraph("_______________________________________________________________________________"));
 		   
-		   
-		   //////////////////////////////////////////////////////////////////////////////////// Calculo de las nominas
-		   
+		   //////////////////////////////////////////////////////////////////////////////////// 
+		   document.add(new Paragraph(" "));
+		   document.add(new Paragraph("Consumo: ",fuente));
+		   document.add(new Paragraph(" "));
 		   
 		   			//////Meter datos del cliente haciendo una pequeña consulta a la BBDD
 		   
 		   PdfPTable table = new PdfPTable(4); 
 		   
-		   int TOTAL=0;
+		   fuente.setSize(12);
+		   fuente.setStyle(1);
+		   Chunk con=new Chunk("Concepto",fuente);
+		   PdfPCell concepto=new PdfPCell();
+		   concepto.addElement(con);
+		   Chunk uni=new Chunk("Unidades",fuente);
+		   PdfPCell unidades=new PdfPCell();
+		   unidades.addElement(uni);
+		   Chunk ivac=new Chunk("IVA 21%",fuente);
+		   PdfPCell iva=new PdfPCell();
+		   iva.addElement(ivac);
+		   Chunk tot=new Chunk("TOTAL (€)",fuente);
+		   PdfPCell total=new PdfPCell();
+		   total.addElement(tot);
 		   
-		   for(int i=0;i<=tipoCaracteristica.size();i++){
+		   float TOTAL=0;
+			DecimalFormat df = new DecimalFormat("0.00");
+		   float imprimir=0;
+		   String aux;
+		   
+		   for(int i=0;i<tipoCaracteristica.size();i++){
 			   
 			   if(i==0){
-				   table.addCell("Concepto");
-				   table.addCell("Unidades");
-				   table.addCell("IVA 21%");
-				   table.addCell("TOTAL");
+				   table.addCell(concepto);
+				   table.addCell(unidades);
+				   table.addCell(iva);
+				   table.addCell(total);
+				   
+				   
+				   //coste habitacion
+				   table.addCell("Habitacion "+tipoHab);
+				   table.addCell(numDias+" días");
+				   imprimir=(float) (pHab*0.21*numDias);
+				   aux=df.format(imprimir).toString();
+				   table.addCell(aux);
+				   aux=df.format(pHab*numDias).toString();
+				   table.addCell(aux);
+				   TOTAL=TOTAL+pHab*numDias;
 			   }
-			   if(i==1){
-				   //meter coste de la habitación * dias
-			   }
 			   
+			   if(tipoCaracteristica.get(i).equals("Pension completa")){
+				   tipoPension="pension completa";
+				   costePension=30;
+				   costePensionN=20;
+		   	   }else if(tipoCaracteristica.get(i).equals("Media pension")){
+		   		   tipoPension="pension media";
+		   		   costePension=15;
+		   		   costePensionN=10;
+		   	   }else if(tipoCaracteristica.get(i).equals("Numero de ninos")){
+				   table.addCell("Niños a "+tipoPension);
+				   int num=Math.round(precios.get(i));
+				   table.addCell(num+ "");
+				   imprimir=(float) (precios.get(i)*0.21*costePensionN*numDias);
+				   aux=df.format(imprimir).toString();
+				   table.addCell(aux);
+				   imprimir=precios.get(i)*costePensionN*numDias;
+				   aux=df.format(imprimir).toString();
+				   table.addCell(aux);
+				   TOTAL=TOTAL+precios.get(i)*costePensionN*numDias;
+			   }else if(tipoCaracteristica.get(i).equals("Numero de adultos")){
+				   table.addCell("Adultos a "+tipoPension);
+				   int num=Math.round(precios.get(i));
+				   table.addCell(num+"");
+				   imprimir=(float) (precios.get(i)*0.21*costePension*numDias);
+				   aux=df.format(imprimir).toString();
+				   table.addCell(aux);
+				   imprimir=precios.get(i)*costePension*numDias;
+				   aux=df.format(imprimir).toString();
+				   table.addCell(aux);
+				   TOTAL=TOTAL+precios.get(i)*costePension*numDias;
+			   }else{
 			   
-			   ///calculos TENIENDO EN CUENTA EL COSTE DE LA HABITACION!!!!!!!
-			   
-			   if(i==tipoCaracteristica.size()){
-				   PdfPCell celdaFinal = new PdfPCell(new Paragraph("TOTAL:      "+TOTAL));
-				   table.addCell(celdaFinal);
+				   table.addCell(tipoCaracteristica.get(i));
+				   table.addCell("1");
+				   imprimir=(float) (precios.get(i)*0.21);
+				   aux=df.format(imprimir).toString();
+				   table.addCell(aux);
+				   table.addCell(precios.get(i).toString());
+				   TOTAL=TOTAL+precios.get(i);
 			   }
 			}
-		   
 		   document.add(table);
+		   
+		   document.add(new Chunk("_______________________________________________________________________________"));
+		   document.add(new Chunk("                                                                                                                  TOTAL: "+df.format(TOTAL)+" €"));
 			   
 		   
 		   
@@ -163,7 +252,7 @@ public class Factura {
 			ResultSet rs=pst.executeQuery();
 			while(rs.next()){
 				//rellenar array de caracteristicas
-				rs.getString("DNI");
+				DNI=rs.getString("DNI");
 				tipoCaracteristica.add(rs.getString("tipo"));
 				precios.add(Float.parseFloat(rs.getString("precio")));
 			}
@@ -173,7 +262,85 @@ public class Factura {
 		}catch(Exception e){
 			e.printStackTrace();
 
-		}	
+		}
+		
+		
+		try{
+			String query="SELECT * FROM Reservas where idReserva='"+idRes+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			while(rs.next()){
+				//rellenar array de caracteristicas
+				numHabitacion=Integer.parseInt(rs.getString("nHabitacion"));
+				
+				fechaEntrada=rs.getString("fecha_entrada");
+				fechaSalida=rs.getString("fecha_salida");
+			}
+
+			//rs.close();
+			//pst.close();
+		}catch(Exception e){
+			e.printStackTrace();
+
+		}
+		
+		
+		
+		try{
+			String query="SELECT * FROM Habitaciones where nHabitacion='"+numHabitacion+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			while(rs.next()){
+				//rellenar array de caracteristicas
+				tipoHab=rs.getString("categoria");
+				pHab=Float.parseFloat(rs.getString("importe"));
+			}
+
+			//rs.close();
+			//pst.close();
+		}catch(Exception e){
+			e.printStackTrace();
+
+		}
+		
+		
+		
+		try{
+			String query="SELECT * FROM Clientes where DNI='"+DNI+"'";
+			PreparedStatement pst=connection.prepareStatement(query);
+			ResultSet rs=pst.executeQuery();
+			while(rs.next()){
+				//rellenar array de caracteristicas
+				nombreCliente=rs.getString("nombre");
+				apellidosCliente=rs.getString("apellidos");
+				telfCliente=rs.getString("telefono");
+			}
+
+			//rs.close();
+			//pst.close();
+		}catch(Exception e){
+			e.printStackTrace();
+
+		}
+		
+		
+		SimpleDateFormat formato=new SimpleDateFormat("dd/MM/yyyy");
+		Date fechaE = null;
+		Date fechaS = null;
+		try {
+			fechaE=formato.parse(fechaEntrada);
+			fechaS = formato.parse(fechaSalida);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		numDias=diferenciaEnDias2(fechaS, fechaE);
+	}
+	
+	public int diferenciaEnDias2(Date fechaMayor, Date fechaMenor) {
+		long diferenciaEn_ms = fechaMayor.getTime() - fechaMenor.getTime();
+		long dias = diferenciaEn_ms / (1000 * 60 * 60 * 24);
+		return (int) dias;
 	}
 	
 }

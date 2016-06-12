@@ -58,7 +58,9 @@ public class clienteInterfaz extends JFrame {
 		lblMisReservas.setBounds(41, 36, 136, 14);
 		contentPane.add(lblMisReservas);
 		
+		
 		JButton btnEliminarReserva = new JButton("Eliminar Reserva");
+		//boton eliminar reserva
 		btnEliminarReserva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int row;

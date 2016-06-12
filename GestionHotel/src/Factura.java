@@ -232,6 +232,8 @@ public class Factura {
 		   
 		   
 			Runtime.getRuntime().exec("cmd /c start "+"C:\\Users\\Jake\\Desktop\\Nominas_2016_Grupo1\\A\\DefensaA.pdf");
+			metodosAdmin admin=new metodosAdmin();
+			admin.eliminarReserva(idRes, ""+numHabitacion+"");
 			funciona=1;
 		} catch (IOException e) {
 			e.printStackTrace();

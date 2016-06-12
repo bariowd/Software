@@ -20,9 +20,11 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import java.awt.Font;
+import java.awt.Image;
 
 public class caracteristicasReserva extends JDialog {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -117,13 +119,13 @@ public class caracteristicasReserva extends JDialog {
 							met.insertaExtra("Sauna", 18);
 						}
 						if(chckbxBaoTurco.isSelected()){
-							met.insertaExtra("Bano Turco", 20);
+							met.insertaExtra("Bano Turco", 18);
 						}
 						if(chckbxJacuzzi.isSelected()){
-							met.insertaExtra("Jacuzzi", 30);
+							met.insertaExtra("Jacuzzi", 20);
 						}
 						if(chckbxGimnasio.isSelected()){
-							met.insertaExtra("Gimnasio", 10);
+							met.insertaExtra("Gimnasio", 5);
 						}
 						
 						if(cbAlcohol.isSelected()){
@@ -185,8 +187,8 @@ public class caracteristicasReserva extends JDialog {
 			panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione su tipo de pensión:"));
 			panel.setLayout(null);
 			
-			cbAlcohol = new JCheckBox("Extra: Bebidas alcoh\u00F3licas");
-			cbAlcohol.setBounds(35, 170, 206, 23);
+			cbAlcohol = new JCheckBox("Extra: Bebidas alcoh\u00F3licas. (15\u20AC)");
+			cbAlcohol.setBounds(20, 170, 221, 23);
 			panel1.add(cbAlcohol);
 			
 			JPanel panel_1 = new JPanel();
@@ -227,6 +229,11 @@ public class caracteristicasReserva extends JDialog {
 			lblNewLabel.setBounds(247, 216, 234, 14);
 			panel1.add(lblNewLabel);
 			
+			JLabel lblSeleccioneSuTipo = new JLabel("Seleccione su tipo de pensi\u00F3n durante su estancia en el hotel:");
+			lblSeleccioneSuTipo.setFont(new Font("Tahoma", Font.BOLD, 13));
+			lblSeleccioneSuTipo.setBounds(10, 11, 471, 32);
+			panel1.add(lblSeleccioneSuTipo);
+			
 			
 			
 			JPanel panel2=new JPanel();
@@ -234,59 +241,94 @@ public class caracteristicasReserva extends JDialog {
 			
 			tabbedPane.addTab("Gimnasio & Balneario", panel2);
 			
-			chckbxGimnasio = new JCheckBox("Gimnasio");
-			chckbxGimnasio.setBounds(51, 63, 97, 23);
+			chckbxGimnasio = new JCheckBox("Gimnasio. (5\u20AC)");
+			chckbxGimnasio.setBounds(20, 63, 124, 23);
 			panel2.add(chckbxGimnasio);
 			
-			chckbxJacuzzi = new JCheckBox("Jacuzzi");
-			chckbxJacuzzi.setBounds(51, 117, 97, 23);
+			chckbxJacuzzi = new JCheckBox("Jacuzzi. (20\u20AC)");
+			chckbxJacuzzi.setBounds(20, 117, 124, 23);
 			panel2.add(chckbxJacuzzi);
 			
-			chckbxBaoTurco = new JCheckBox("Ba\u00F1o Turco");
-			chckbxBaoTurco.setBounds(236, 63, 97, 23);
+			chckbxBaoTurco = new JCheckBox("Ba\u00F1o Turco. (18\u20AC)");
+			chckbxBaoTurco.setBounds(253, 63, 175, 23);
 			panel2.add(chckbxBaoTurco);
 			
-			chckbxSauna = new JCheckBox("Sauna");
-			chckbxSauna.setBounds(236, 117, 97, 23);
+			chckbxSauna = new JCheckBox("Sauna. (18\u20AC)");
+			chckbxSauna.setBounds(253, 103, 97, 23);
 			panel2.add(chckbxSauna);
 			
-			chckbxMasaje = new JCheckBox("Masajes");
-			chckbxMasaje.setBounds(51, 175, 97, 23);
+			chckbxMasaje = new JCheckBox("Masajes. (35\u20AC)");
+			chckbxMasaje.setBounds(20, 169, 124, 23);
 			panel2.add(chckbxMasaje);
+			
+			JLabel lblParaHacerMs = new JLabel("<html><body>Para hacer m\u00E1s agradable su estancia, dispone de<br>un gimnasio y un balneario:</body></html>");
+			lblParaHacerMs.setFont(new Font("Tahoma", Font.BOLD, 13));
+			lblParaHacerMs.setBounds(10, 11, 471, 45);
+			panel2.add(lblParaHacerMs);
+			
+			JLabel lblGYM = new JLabel("");
+			Image img3G=new ImageIcon(this.getClass().getResource("/gym.png")).getImage();
+			lblGYM.setIcon(new ImageIcon(img3G));
+			lblGYM.setBounds(150, 48, 75, 56);
+			panel2.add(lblGYM);
+			
+			JLabel lblMSJ = new JLabel("");
+			Image imgM=new ImageIcon(this.getClass().getResource("/masaje.png")).getImage();
+			lblMSJ.setIcon(new ImageIcon(imgM));
+			lblMSJ.setBounds(152, 130, 91, 86);
+			panel2.add(lblMSJ);
+			
+			JLabel lblSPA = new JLabel("");
+			Image imgS=new ImageIcon(this.getClass().getResource("/spa.jpg")).getImage();
+			lblSPA.setIcon(new ImageIcon(imgS));
+			lblSPA.setBounds(253, 144, 197, 86);
+			panel2.add(lblSPA);
 			
 			JPanel panel3=new JPanel();
 			panel3.setLayout(null);
 			JLabel et_p3=new JLabel("<html><body>Dispone de una serie de complementos para mejorar su estancia en <br> el hotel, seleccione los que desee  durante su estancia: </body></html>");
-			et_p3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			et_p3.setFont(new Font("Tahoma", Font.BOLD, 13));
 			et_p3.setBounds(20, 11, 447, 56);
 			panel3.add(et_p3);
 			
 			tabbedPane.addTab("Complementos de la habitación", panel3);
 			
-			cbCama = new JCheckBox("Cama Supletoria");
-			cbCama.setBounds(20, 100, 139, 23);
+			cbCama = new JCheckBox("Cama Supletoria. (12\u20AC)");
+			cbCama.setBounds(20, 74, 157, 23);
 			panel3.add(cbCama);
 			
-			cbCaja = new JCheckBox("Caja fuerte");
-			cbCaja.setBounds(20, 156, 97, 23);
+			cbCaja = new JCheckBox("Caja fuerte. (12\u20AC)");
+			cbCaja.setBounds(20, 110, 139, 23);
 			panel3.add(cbCaja);
 			
-			cbMinibar = new JCheckBox("Minibar");
-			cbMinibar.setBounds(192, 100, 97, 23);
+			cbMinibar = new JCheckBox("Minibar. (20\u20AC)");
+			cbMinibar.setBounds(179, 74, 97, 23);
 			panel3.add(cbMinibar);
 			
-			cbTV = new JCheckBox("TV de pago");
-			cbTV.setBounds(192, 156, 97, 23);
+			cbTV = new JCheckBox("TV de pago. (8\u20AC)");
+			cbTV.setBounds(179, 110, 125, 23);
 			panel3.add(cbTV);
 			
-			chckbxServicioDeHabitaciones = new JCheckBox("Servicio de habitaciones");
-			chckbxServicioDeHabitaciones.setBounds(334, 100, 151, 23);
+			chckbxServicioDeHabitaciones = new JCheckBox("Servicio de habitaciones. (18\u20AC)");
+			chckbxServicioDeHabitaciones.setBounds(296, 74, 189, 23);
 			panel3.add(chckbxServicioDeHabitaciones);
+			
+			JLabel lblH = new JLabel("");
+			Image imgH=new ImageIcon(this.getClass().getResource("/habitacion.jpg")).getImage();
+			lblH.setIcon(new ImageIcon(imgH));
+			lblH.setBounds(20, 140, 256, 90);
+			panel3.add(lblH);
+			
+			JLabel lblB = new JLabel("");
+			Image imgB=new ImageIcon(this.getClass().getResource("/bano.jpg")).getImage();
+			lblB.setIcon(new ImageIcon(imgB));
+			lblB.setBounds(296, 110, 185, 120);
+			panel3.add(lblB);
 			
 			JPanel panel4=new JPanel();
 			panel4.setLayout(null);
 			JLabel et_p4=new JLabel("<html><body>\u00BFDispone ya de un veh\u00EDculo? Si no es as\u00ED puede alquilar <br>uno proporcionado por el hotel.</body></html>");
-			et_p4.setFont(new Font("Tahoma", Font.BOLD, 14));
+			et_p4.setFont(new Font("Tahoma", Font.BOLD, 13));
 			et_p4.setBounds(10, 11, 471, 49);
 			panel4.add(et_p4);
 			
@@ -294,19 +336,25 @@ public class caracteristicasReserva extends JDialog {
 			
 			JLabel lblSiTieneVehculo = new JLabel("Si tiene veh\u00EDculo, reserve ahora su plaza de parking:");
 			lblSiTieneVehculo.setFont(new Font("Tahoma", Font.PLAIN, 12));
-			lblSiTieneVehculo.setBounds(10, 130, 471, 30);
+			lblSiTieneVehculo.setBounds(10, 149, 471, 30);
 			panel4.add(lblSiTieneVehculo);
 			
-			rdbtnReservaConPlaza = new JRadioButton("Reservar plaza de parking.");
+			rdbtnReservaConPlaza = new JRadioButton("Reservar plaza de parking. (15\u20AC)");
 			buttonGroup_1.add(rdbtnReservaConPlaza);
-			rdbtnReservaConPlaza.setBounds(33, 178, 210, 23);
+			rdbtnReservaConPlaza.setBounds(32, 186, 210, 23);
 			panel4.add(rdbtnReservaConPlaza);
 			
 			rdbtnNoQuieroParking = new JRadioButton("No quiero parking...");
 			rdbtnNoQuieroParking.setSelected(true);
 			buttonGroup_1.add(rdbtnNoQuieroParking);
-			rdbtnNoQuieroParking.setBounds(284, 178, 165, 23);
+			rdbtnNoQuieroParking.setBounds(283, 186, 165, 23);
 			panel4.add(rdbtnNoQuieroParking);
+			
+			JLabel lblP = new JLabel("");
+			Image imgP=new ImageIcon(this.getClass().getResource("/parking.jpg")).getImage();
+			lblP.setIcon(new ImageIcon(imgP));
+			lblP.setBounds(228, 41, 253, 106);
+			panel4.add(lblP);
 			
 		}
 		

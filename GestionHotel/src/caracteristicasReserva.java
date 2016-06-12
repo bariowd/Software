@@ -50,8 +50,15 @@ public class caracteristicasReserva extends JDialog {
 	JCheckBox cbAlcohol;
 	JRadioButton rdbtnPensinMedia;
 	JRadioButton rdbtnPensinCompleta;
+	JRadioButton rdbtnRenaultMegane;
+	JRadioButton rdbtnOpelAstra;
+	JRadioButton rdbtnCitrenC;
+	JRadioButton rdbtnNissanz;
+	
 	String dniCliente;
 	int idReserva;
+	private final ButtonGroup buttonGroup_2 = new ButtonGroup();
+	private final ButtonGroup buttonGroup_3 = new ButtonGroup();
 	
 	/**
 	 * @wbp.parser.constructor
@@ -97,6 +104,22 @@ public class caracteristicasReserva extends JDialog {
 						if(rdbtnReservaConPlaza.isSelected()){
 							met.insertaExtra("Plaza de garaje", 15);
 						}
+						
+						if(rdbtnCitrenC.isSelected()){
+							met.insertaExtra("Alquiler Citroen C2", 32);
+						}
+						if(rdbtnNissanz.isSelected()){
+							met.insertaExtra("Alquiler Nissan 350Z", 50);													
+						}
+						
+						if(rdbtnOpelAstra.isSelected()){
+							met.insertaExtra("Alquiler Opel Astra", 35);
+						}
+						
+						if(rdbtnRenaultMegane.isSelected()){
+							met.insertaExtra("Alquiler Renault Megane", 35);
+						}
+						
 						if(chckbxServicioDeHabitaciones.isSelected()){
 							met.insertaExtra("Servicio de habitaciones", 18);
 						}
@@ -336,25 +359,50 @@ public class caracteristicasReserva extends JDialog {
 			
 			JLabel lblSiTieneVehculo = new JLabel("Si tiene veh\u00EDculo, reserve ahora su plaza de parking:");
 			lblSiTieneVehculo.setFont(new Font("Tahoma", Font.PLAIN, 12));
-			lblSiTieneVehculo.setBounds(10, 149, 471, 30);
+			lblSiTieneVehculo.setBounds(10, 161, 471, 30);
 			panel4.add(lblSiTieneVehculo);
 			
 			rdbtnReservaConPlaza = new JRadioButton("Reservar plaza de parking. (15\u20AC)");
-			buttonGroup_1.add(rdbtnReservaConPlaza);
-			rdbtnReservaConPlaza.setBounds(32, 186, 210, 23);
+			buttonGroup_3.add(rdbtnReservaConPlaza);
+			rdbtnReservaConPlaza.setBounds(32, 198, 210, 23);
 			panel4.add(rdbtnReservaConPlaza);
 			
 			rdbtnNoQuieroParking = new JRadioButton("No quiero parking...");
+			buttonGroup_3.add(rdbtnNoQuieroParking);
 			rdbtnNoQuieroParking.setSelected(true);
-			buttonGroup_1.add(rdbtnNoQuieroParking);
-			rdbtnNoQuieroParking.setBounds(283, 186, 165, 23);
+			rdbtnNoQuieroParking.setBounds(283, 198, 165, 23);
 			panel4.add(rdbtnNoQuieroParking);
 			
 			JLabel lblP = new JLabel("");
 			Image imgP=new ImageIcon(this.getClass().getResource("/parking.jpg")).getImage();
 			lblP.setIcon(new ImageIcon(imgP));
-			lblP.setBounds(228, 41, 253, 106);
+			lblP.setBounds(238, 42, 243, 106);
 			panel4.add(lblP);
+			
+			JPanel panel_2 = new JPanel();
+			panel_2.setBounds(10, 57, 220, 91);
+			panel4.add(panel_2);
+			panel_2.setLayout(null);
+			
+			rdbtnRenaultMegane = new JRadioButton("Ren.  Megane");
+			buttonGroup_3.add(rdbtnRenaultMegane);
+			rdbtnRenaultMegane.setBounds(0, 17, 109, 23);
+			panel_2.add(rdbtnRenaultMegane);
+			
+			rdbtnOpelAstra = new JRadioButton("Opel Astra");
+			buttonGroup_3.add(rdbtnOpelAstra);
+			rdbtnOpelAstra.setBounds(0, 53, 109, 23);
+			panel_2.add(rdbtnOpelAstra);
+			
+			rdbtnCitrenC = new JRadioButton("Citr\u00F6en C2");
+			buttonGroup_3.add(rdbtnCitrenC);
+			rdbtnCitrenC.setBounds(111, 17, 109, 23);
+			panel_2.add(rdbtnCitrenC);
+			
+			rdbtnNissanz = new JRadioButton("Nissan 350Z");
+			buttonGroup_3.add(rdbtnNissanz);
+			rdbtnNissanz.setBounds(111, 53, 109, 23);
+			panel_2.add(rdbtnNissanz);
 			
 		}
 		

@@ -77,7 +77,7 @@ public class caracteristicasReserva extends JDialog {
 	
 	public void iniciar(){
 
-
+		setIconImage (new ImageIcon(getClass().getResource("/hotel.png")).getImage());
 		setBounds(400, 175, 502, 331);
 		setResizable(false);
 		setTitle("Características de la Reserva");

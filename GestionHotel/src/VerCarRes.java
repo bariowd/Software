@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -21,6 +22,7 @@ public class VerCarRes extends JDialog {
 	 * Create the dialog.
 	 */
 	public VerCarRes(String dniC, int idRes) {
+		setIconImage (new ImageIcon(getClass().getResource("/hotel.png")).getImage());
 		setBounds(100, 100, 450, 300);
 		MetodosCaracteristicasR verC=new MetodosCaracteristicasR(dniC, idRes);
 		getContentPane().setLayout(new BorderLayout());

@@ -32,6 +32,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setIconImage (new ImageIcon(getClass().getResource("/hotel.png")).getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(375, 200, 595, 326);
 		setResizable(false);
@@ -122,9 +123,11 @@ public class Login extends JFrame {
 		lblanNoTienes.setBounds(236, 271, 213, 14);
 		contentPane.add(lblanNoTienes);
 		
-		JLabel lblLikeAtHome = new JLabel("LIKE AT HOME:");
+		JLabel lblLikeAtHome = new JLabel("");
+		Image imgL=new ImageIcon(this.getClass().getResource("/logotipo.png")).getImage();
+		lblLikeAtHome.setIcon(new ImageIcon(imgL));
 		lblLikeAtHome.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-		lblLikeAtHome.setBounds(322, 27, 257, 59);
+		lblLikeAtHome.setBounds(284, 21, 295, 65);
 		contentPane.add(lblLikeAtHome);
 		
 		

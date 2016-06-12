@@ -14,6 +14,7 @@ public class tiposHabitacion extends JFrame {
 	private JPanel contentPane;
 	
 	public tiposHabitacion() {
+		setIconImage (new ImageIcon(getClass().getResource("/hotel.png")).getImage());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 387, 264);
 		setTitle("Tipos de habitación");

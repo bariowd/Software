@@ -70,6 +70,7 @@ public class FormularioReservas extends JFrame {
 	}
 	@SuppressWarnings("rawtypes")
 	public void inicializar() {
+		setIconImage (new ImageIcon(getClass().getResource("/hotel.png")).getImage());
 		setBounds(400, 175, 423, 468);
 		setResizable(false);
 		setTitle("Formulario para la Reserva");

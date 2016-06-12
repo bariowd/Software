@@ -39,6 +39,7 @@ public class registroSistema extends JDialog {
 	 * Create the dialog.
 	 */
 	public registroSistema() {
+		setIconImage (new ImageIcon(getClass().getResource("/hotel.png")).getImage());
 		setBounds(375, 200, 422, 338);
 		setResizable(false);
 		setTitle("Formulario para registrarse en la aplicación");

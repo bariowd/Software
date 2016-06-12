@@ -42,6 +42,7 @@ public class adminInterfaz extends JFrame {
 	 * 
 	 */
 	public adminInterfaz(String idAd) {
+		setIconImage (new ImageIcon(getClass().getResource("/hotel.png")).getImage());
 		idAdministradorNow=idAd;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(305, 130, 734, 584);

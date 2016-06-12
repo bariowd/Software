@@ -33,7 +33,7 @@ public class clienteInterfaz extends JFrame {
 	 * Create the frame.
 	 */
 	public clienteInterfaz(String DNI) {
-
+		setIconImage (new ImageIcon(getClass().getResource("/hotel.png")).getImage());
 		cliente=new metodosCliente(DNI);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(375, 200, 717, 280);

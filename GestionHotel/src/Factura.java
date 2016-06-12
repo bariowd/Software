@@ -64,7 +64,7 @@ public class Factura {
 		pillaCaracteristicas();
 		try {
 		   Document document = new Document(PageSize.A4, 35, 30, 50, 50);
-		   FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\Jake\\Desktop\\Nominas_2016_Grupo1\\A\\DefensaA.pdf");
+		   FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\Jake\\Desktop\\PDFhotel\\Factura"+idRes+".pdf");
 		  // 311927
 		   
 		   Trabajador t;
@@ -231,7 +231,7 @@ public class Factura {
 		   document.close();
 		   
 		   
-			Runtime.getRuntime().exec("cmd /c start "+"C:\\Users\\Jake\\Desktop\\Nominas_2016_Grupo1\\A\\DefensaA.pdf");
+			Runtime.getRuntime().exec("cmd /c start "+"C:\\Users\\Jake\\Desktop\\PDFhotel\\Factura"+idRes+".pdf");
 			metodosAdmin admin=new metodosAdmin();
 			admin.eliminarReserva(idRes, ""+numHabitacion+"");
 			funciona=1;

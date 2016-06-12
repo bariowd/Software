@@ -115,7 +115,7 @@ public class adminInterfaz extends JFrame {
 				
 			}
 		});
-		button_1.setBounds(295, 438, 158, 23);
+		button_1.setBounds(273, 438, 180, 23);
 		contentPane.add(button_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -164,7 +164,7 @@ public class adminInterfaz extends JFrame {
 			}
 		});
 		
-		btnEliminarReserva.setBounds(575, 439, 131, 23);
+		btnEliminarReserva.setBounds(548, 439, 158, 23);
 		contentPane.add(btnEliminarReserva);
 		
 		JButton btnNewButton = new JButton("Realizar Reserva");
@@ -294,7 +294,7 @@ public class adminInterfaz extends JFrame {
 				}
 			}
 		});
-		btnCaracteristicasReserva.setBounds(20, 479, 257, 23);
+		btnCaracteristicasReserva.setBounds(20, 479, 243, 23);
 		contentPane.add(btnCaracteristicasReserva);
 		
 		JButton btnAct = new JButton("Actualizar reservas");
@@ -303,7 +303,7 @@ public class adminInterfaz extends JFrame {
 				tablaReservas_1.setModel(DbUtils.resultSetToTableModel(admin.verReservas()));
 			}
 		});
-		btnAct.setBounds(305, 479, 148, 23);
+		btnAct.setBounds(273, 479, 180, 23);
 		contentPane.add(btnAct);
 		
 		JButton btnVerCaracteristicasDe = new JButton("Ver caracteristicas de una reserva");
@@ -325,7 +325,7 @@ public class adminInterfaz extends JFrame {
 				
 			}
 		});
-		btnVerCaracteristicasDe.setBounds(479, 479, 227, 23);
+		btnVerCaracteristicasDe.setBounds(463, 479, 243, 23);
 		contentPane.add(btnVerCaracteristicasDe);
 		
 		JButton btnNominas = new JButton("Nominas de los trabajadores");
@@ -334,7 +334,7 @@ public class adminInterfaz extends JFrame {
 				admin.generaNominas();
 			}
 		});
-		btnNominas.setBounds(20, 521, 257, 23);
+		btnNominas.setBounds(20, 521, 334, 23);
 		contentPane.add(btnNominas);
 		
 		JButton btnFactura = new JButton("Factura de la reserva");
@@ -357,7 +357,7 @@ public class adminInterfaz extends JFrame {
 				}
 			}
 		});
-		btnFactura.setBounds(315, 521, 158, 23);
+		btnFactura.setBounds(372, 521, 334, 23);
 		contentPane.add(btnFactura);
 		
 	}

@@ -28,8 +28,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class Nomina {
 	ArrayList<Trabajador> listaTrabajadores=new ArrayList<>();
 	
-	String RutaEscrituraTXT="C:\\Users\\Jake\\Desktop\\SIS3_Nominas.txt";
-	
 	cuotasTrabajadores cuotas=new cuotasTrabajadores();
 	String fechaProfesor;
 	Nomina(ArrayList<Trabajador> trabajadores, String fecha) throws ParseException, IOException, DocumentException{
@@ -40,7 +38,7 @@ public class Nomina {
 	
 	public void hazPDF() throws DocumentException, FileNotFoundException, ParseException{
 		   Document document = new Document(PageSize.A4, 35, 30, 50, 50);
-		   FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\Jake\\Desktop\\Nominas_2016_Grupo1\\C\\DefensaC.pdf");
+		   FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\Jake\\Desktop\\PDFhotel\\Nominas.pdf");
 		  // 311927
 		   
 		   Trabajador t;
@@ -240,7 +238,7 @@ public class Nomina {
 		   document.close();
 		   
 		   try {
-			Runtime.getRuntime().exec("cmd /c start "+"C:\\Users\\Jake\\Desktop\\Nominas_2016_Grupo1\\C\\DefensaC.pdf");
+			Runtime.getRuntime().exec("cmd /c start "+"C:\\Users\\Jake\\Desktop\\PDFhotel\\Nominas.pdf");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
